@@ -1,41 +1,35 @@
+//configuracion del servidor
 require('../config/config');
 
-const express = require('express')
+//conexion a base de datos
+require('./mongoDB/conexion')
 
+//express
+const express = require('express')
 const app = express()
 
+//
+
+
+
+//manejo de rutas (get , post,put...)
 
 const bodyParser = require('body-parser')
-    //middleware
+
+//middlewares
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// parse application/json
 app.use(bodyParser.json())
 
-app.get('/', function(req, res) {
-    res.send('hola ya estas en heroku')
-})
+app.use(require('./routes/peticiones'))
 
-app.get('/usuario', function(req, res) {
-    res.send('hola')
-})
 
-app.post('/usuario', function(req, res) {
-    let body = req.body;
-    res.send({
-        "estudiante": body
-    })
-})
 
-app.delete('/usuario', function(req, res) {
-    res.send('hola peticion delete')
-})
 
-app.put('/usuario/:id', function(req, res) {
-    let id = req.params.id
-    res.send('este es el id' + id)
-})
 
+
+
+//puerto de escucha para el servidor
 app.listen(process.env.PORT, () => {
     console.log('servidor iniciado en el puerto ' + process.env.PORT);
 })
