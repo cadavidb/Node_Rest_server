@@ -16,6 +16,8 @@ require('./mongoDB/conexion')
 
 
 //middlewares
+app.set('view engine', 'hbs');
+app.use(express.static(__dirname + '/views'))
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())

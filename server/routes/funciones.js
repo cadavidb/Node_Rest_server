@@ -20,8 +20,12 @@ let FindUsersBD = (req, res) => {
 
     .limit(limite).skip(inicio)
 
-    .exec((err, userBD) => { //ejecutamos la funcion
+    .exec((err, userBD) => { 
+       
 
+     
+
+     
 
         if (err) {
             res.statusCode(400).
@@ -39,11 +43,14 @@ let FindUsersBD = (req, res) => {
                     err
                 })
             }
+           
+           
 
             res.json({
                 usuariosTotales: c,
                 usuarios: userBD
             })
+            
         })
 
 

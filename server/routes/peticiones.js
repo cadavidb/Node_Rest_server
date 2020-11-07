@@ -20,6 +20,8 @@ app.post('/usuario', function(req, res) {
 app.get('/usuario', function(req, res) {
 
     FindUsersBD(req, res)
+    
+
 })
 
 //cambiar el estado de un usuario en la BD
