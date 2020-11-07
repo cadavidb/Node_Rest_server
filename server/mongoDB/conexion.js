@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.set('useCreateIndex', true)
-let bd = mongoose.connect('mongodb://localhost:27017/usuarios',
+let bd = mongoose.connect(process.env.URLDB,
 
     { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
 

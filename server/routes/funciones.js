@@ -51,6 +51,7 @@ let FindUsersBD = (req, res) => {
 
 }
 
+
 //crear usuario y guardarlo en la base de datos
 
 let CrearUsuarioBD = (req, res) => {
@@ -79,6 +80,7 @@ let CrearUsuarioBD = (req, res) => {
 }
 
 
+
 //cambiar estado de un usuario (activo || desactivado)
 
 let borrar = (req, res) => {
@@ -93,7 +95,7 @@ let borrar = (req, res) => {
         if (err) {
             return res.send(err)
         }
-
+        
 
         res.json({
             ok: true,
@@ -107,6 +109,8 @@ let borrar = (req, res) => {
 
 }
 
+
+//actualizar algun dato del usuario en la base de datos
 let actualizarData = (req, res) => {
 
     let id = req.params.id
@@ -128,6 +132,7 @@ let actualizarData = (req, res) => {
         })
     })
 }
+
 module.exports = {
     FindUsersBD,
     CrearUsuarioBD,
