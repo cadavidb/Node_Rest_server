@@ -10,6 +10,9 @@ const Usuario = require('../mongoDB/models/usuario')
 //funcion para encontrar usuarios en la base de datos
 let FindUsersBD = (req, res) => {
 
+
+
+
     let inicio = Number(req.query.inicio || 0)
 
     let limite = Number(req.query.limite || 5)
@@ -92,16 +95,19 @@ let CrearUsuarioBD = (req, res) => {
 
 let borrar = (req, res) => {
     let id = req.params.id;
+    if (id.length<=5) {
+        return res.json({
+            warning:'debes poner un id valido'
+        })
+    }
+ 
     let body = _.pick(req.body, ['estado'])
 
-    Usuario.findByIdAndUpdate(id, body, {
-        new: true,
-        context: 'query',
-        useFindAndModify: false
-    }, (err, userBD) => {
+    Usuario.findByIdAndUpdate(id, body, { new: true,  context: 'query',  useFindAndModify: false}, (err, userBD) => {
         if (err) {
             return res.send(err)
         }
+        
         
 
         res.json({

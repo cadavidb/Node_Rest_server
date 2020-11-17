@@ -1,6 +1,15 @@
 //configuracion del puerto
 
-process.env.PORT = process.env.PORT || 8080;
+process.env.PORT = process.env.PORT || 3000;
+
+//vencimiento del token
+process.env.Vtoken='1 day';
+
+process.env.semilla=process.env.semilla || 'semilla desarrollo'
+
+
+
+
 
 //entorno
 process.env.NODE_ENV=process.env.NODE_ENV || 'dev';
