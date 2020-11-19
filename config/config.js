@@ -9,7 +9,8 @@ process.env.semilla=process.env.semilla || 'semilla desarrollo'
 
 
 
-
+//google client id
+process.env.clientid=process.env.clientid || '1076107682274-evqdi2hgctjsin2c0r8u7hdbldf7l5le.apps.googleusercontent.com'
 
 //entorno
 process.env.NODE_ENV=process.env.NODE_ENV || 'dev';

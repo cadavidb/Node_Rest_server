@@ -1,6 +1,8 @@
 //express
 const express = require('express')
+const path = require('path');
 const app = express()
+
 //body parser para extraer datos del url
 const bodyParser = require('body-parser')
 
@@ -21,8 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
+app.use(express.static(path.resolve(__dirname + '../../public')))
 app.use(require('./routes/peticiones'))
-
 
 
 
