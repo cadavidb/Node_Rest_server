@@ -63,7 +63,9 @@ Usuario.findOne({correo:userGoogle.correo},(err,usuarioDB)=>{
             })
         }else{
             
-            const token=jwt.sign({data: userGoogle }, process.env.semilla, { expiresIn: process.env.Vtoken});
+            const token=jwt.sign({data: userGoogle },
+                 process.env.semilla,
+                {expiresIn: process.env.Vtoken});
             return res.json({
                 ok:true,
                 usuario:usuarioDB,
