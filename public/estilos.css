@@ -1,4 +1,13 @@
+*{
+    background-color: #0e0f0f;
+}
+body{
+    background-color: #0e0f0f;
+}
+
 #titulo{
+    border-color: blueviolet;
+    background-color: #0e0f0f;
     font-size: 20px;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -11,13 +20,14 @@
 }
 
 
-footer {
-    padding-top: 40px;
-    position: relative;
-    bottom: 0;
-    color: white;
+#f{
+    background-color: blueviolet;
 }
-#abajo{
-    padding-left: 30%;
-    color: wheat;
+#nav {
+  
+    color: white;
+    background-color: #0e0f0f;
+}
+#line{
+    background-color:gray;
 }

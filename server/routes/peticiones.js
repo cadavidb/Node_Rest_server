@@ -1,7 +1,8 @@
 const {login} = require('./login');
-
+const jwt = require('jsonwebtoken');
 const express = require('express')
 const  {verificarToken,verificarRole}= require('../middlewares/auth');
+const Usuario = require('../mongoDB/models/usuario')
 
 const app = express();
 
@@ -25,22 +26,125 @@ async function verify(token) {
         audience: process.env.clientid, 
     });
     const payload = ticket.getPayload();
-  console.log(payload.name);
-  console.log(payload.picture);
-  console.log(payload.email);
+  return {
+      nombre:payload.name,
+      img:payload.picture,
+      correo:payload.email,
+      google:true
+  }
  
   }
  
 
 
-app.post('/google',(req,res)=>{
-    let token=req.body.idtoken
-    verify(token)
-    res.json({
-        token
+app.post('/google',async(req,res)=>{
+let token=req.body.idtoken;
+
+
+
+
+//    let usuarioGoogle= await  verify(token) 
+//    .catch(err=>{
+//       return res.json({
+//           ok:false,
+//           err:err
+//         }) 
+//     }).then()
+
+//    return res.json({
+//        user:usuarioGoogle
+
+//    })
+//      Usuario.findOne({email:data.email},(err,usuario)=>{
+      
+//             if (err) {
+//                 return res.status(500).json({
+//                     ok:false,
+//                     err
+//                 })
+//             }
+      
+//             if (usuario) {
+//                 if (usuario.google===false) {
+//                   return res.status(400).json({
+//                       ok:false,
+//                       err:{
+//                           message:'debe autenticarse de manera normal'
+//                       }
+//                   })
+//                 }else{
+//                   const token=jwt.sign({
+//                       data: usuario
+//                     }, process.env.semilla, { expiresIn: process.env.Vtoken});
+          
+          
+//                     return res.json({
+//                         ok:true,
+//                         usuario,
+//                         token
+//                     })
+      
+//                 }
+//             }else{
+      
+//               //si el usuario no existe en nuestra base de datos
+      
+//               let user=new Usuario();
+//               user.nombre=data.nombre
+//               user.img=data.img
+//               user.correo=data.correo
+//               user.google=data.google
+//               user.password=':)'
+//           user.save((err,save)=>{
+//               if (err) {
+//                   return res.status(500).json({
+//                       ok:false,
+//                       err
+//                   })
+//               }
+
+//               console.log('usuario autenticado por google');
+      
+      
+      
+//               const token=jwt.sign({
+//                   data: usuario
+//                 }, process.env.semilla, { expiresIn: process.env.Vtoken});
+      
+      
+//                 return res.json({
+//                     ok:true,
+//                     usuario,
+//                     token
+//                 })
+      
+      
+      
+//           })
+              
+      
+      
+//             }
+      
+      
+      
+      
+      
+      
+//         })
+
+
+
+
+
+
+
+        
     })
 
-})
+  
+
+
 //crear usuario y guardarlo en BD 
 app.post('/usuario',[verificarToken,verificarRole], (req, res)=> {
 

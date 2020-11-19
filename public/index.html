@@ -27,10 +27,10 @@
 
   
 
-      <div class="jumbotron">
+      <div class="jumbotron" id="nav">
         <h1 class="display-4">Hola!</h1>
         <p class="lead">este es una pequeña parte del  frontend de un restServer</p>
-        <hr class="my-4">
+        <hr class="my-4" id="line">
         <p>creado con nodejs , express, mongodb , jwt ...</p>
         <p class="lead">
           <a class="btn btn-primary btn-lg" href="#" role="button">Leer mas</a>
@@ -38,6 +38,22 @@
       </div>
 
 </body>
+
+
+<div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 :
+    <a href="https://github.com/cadavidb"> Brayan cadavid</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 <script>
   
     function onSignIn(googleUser) {
@@ -50,7 +66,6 @@
 };
 xhr.send('idtoken=' + id_token);
 
- 
 }
 
 
@@ -64,15 +79,7 @@ function signOut() {
   }
 
 </script>
-<footer >
-    <nav class="navbar navbar-light bg-dark" id="nav">
-        <a class="navbar-brand" href="#" id="abajo" >
-          <img src="https://sheleaps.org/wp-content/uploads/2018/07/Bootstrap-4-1.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-         Backend Developer Brayan cadavid 
-        </a>
-      </nav>
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-      </div>
-</footer>
+
+
+
 </html>

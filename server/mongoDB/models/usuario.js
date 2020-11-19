@@ -33,7 +33,7 @@ let usuarioSchema = mongoose.Schema({
 
     role: {
         type: String,
-        default: 'USER_ROLE',
+        default: 'usuario',
         enum: rolesValidos
 
     },
@@ -44,6 +44,10 @@ let usuarioSchema = mongoose.Schema({
         type: String,
         default: 'activo',
         enum: estadosValidos
+    },
+    img:{
+        type:String,
+        required:false
     }
 
 
