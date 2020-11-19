@@ -39,7 +39,66 @@ async function verify(token) {
 
 app.post('/google',async(req,res)=>{
 let token=req.body.idtoken;
+let userGoogle= await verify(token).catch(err=>{
+    return res.status(500).json({
+        ok:false,
+        err
+    })
+})
 
+Usuario.findOne({correo:userGoogle.correo},(err,usuarioDB)=>{
+    if (err) {
+        return res.status(500).json({
+            ok:false,
+            err
+        })
+    }
+    if (usuarioDB) {
+        if (usuarioDB.google===false) {
+            return res.status(400).json({
+                ok:false,
+                err:{
+                    message:'debe usar autenticacion normal'
+                }
+            })
+        }else{
+            
+            const token=jwt.sign({data: userGoogle }, process.env.semilla, { expiresIn: process.env.Vtoken});
+            return res.json({
+                ok:true,
+                usuario:usuarioDB,
+                token
+            })
+
+        }
+        
+    }else{
+
+        let user=new Usuario();
+        user.nombre=userGoogle.nombre
+        user.img=userGoogle.img
+        user.correo=userGoogle.correo
+        user.google=userGoogle.google
+        user.password=':)'
+        user.save((err,succes)=>{
+            if (err) {
+                return res.json({
+                    ok:false,
+                    err
+                })
+            }
+
+        })            
+                  
+        return res.json({
+            ok:true,
+            usuario:usuarioDB,
+            token
+        })
+                      
+    }
+             
+})
 
 
 
